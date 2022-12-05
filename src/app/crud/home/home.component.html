@@ -1,1 +1,27 @@
-<p>home works!</p>
+<div class="container">
+  <h1>List of Product</h1>
+  <button type="button" [routerLink]="/crud/create/">Create New Product</button>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>description</th>
+      <th>price</th>
+      <th>quantity</th>
+      <th>action</th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.quantity }}</td>
+      <td>
+        <button type="button" [routerLink]="['/crud/update/', 'product.id']">
+          update
+        </button>
+        <button type="button" (click)="delete(product.id)">delete</button>
+      </td>
+    </tr>
+  </table>
+</div>
