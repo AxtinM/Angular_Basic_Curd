@@ -1,1 +1,15 @@
-<p>details works!</p>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">{{ product.name }}</h1>
+    <p *ngIf="product.description !== undefined" class="lead">
+      {{ product.description }}
+    </p>
+    <hr class="my-4" />
+    <p *ngIf="product.price !== undefined">
+      {{ product.price }}
+    </p>
+    <a class="btn btn-primary btn-lg" href="#" routerLink="/crud/home"
+      >Go Back</a
+    >
+  </div>
+</div>

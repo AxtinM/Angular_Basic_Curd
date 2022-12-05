@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CrudService } from '../crud/crud.service';
-import { Product } from '../crud/product';
+import { CrudService } from '../crud.service';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +8,9 @@ import { Product } from '../crud/product';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  private products: Product[] = [];
+  public products: Product[] = [];
 
-  constructor(private crudService: CrudService) {}
+  constructor(public crudService: CrudService) {}
 
   ngOnInit(): void {
     this.crudService.getAll().subscribe((data: Product[]) => {
@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   }
 
   delete(id: any) {
-    return this.crudService.delete(id);
+    this.crudService.delete(id).subscribe((data) => {
+      this.products = this.products.filter((item) => item.id != data.id);
+    });
   }
 }

@@ -15,25 +15,11 @@
       "quantity": 5
     },
     {
-      "id": 3,
-      "name": "product_3",
-      "description": "this is product 3",
-      "price": 560,
-      "quantity": 8
-    },
-    {
       "id": 4,
       "name": "product_4",
       "description": "this is product 4",
       "price": 3120,
       "quantity": 1
-    },
-    {
-      "id": 5,
-      "name": "product_5",
-      "description": "this is product 5",
-      "price": 1233,
-      "quantity": 2
     }
   ]
 }

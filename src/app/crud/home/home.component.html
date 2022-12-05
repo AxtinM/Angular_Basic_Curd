@@ -1,27 +1,52 @@
 <div class="container">
   <h1>List of Product</h1>
-  <button type="button" [routerLink]="/crud/create/">Create New Product</button>
-  <table>
-    <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>description</th>
-      <th>price</th>
-      <th>quantity</th>
-      <th>action</th>
-    </tr>
-    <tr *ngFor="let product of products">
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.description }}</td>
-      <td>{{ product.price }}</td>
-      <td>{{ product.quantity }}</td>
-      <td>
-        <button type="button" [routerLink]="['/crud/update/', 'product.id']">
-          update
-        </button>
-        <button type="button" (click)="delete(product.id)">delete</button>
-      </td>
-    </tr>
+  <button type="button" routerLink="/crud/create/" class="btn btn-success">
+    Create New Product
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">description</th>
+        <th scope="col">price</th>
+        <th scope="col">quantity</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>
+          <a
+            href="#"
+            class="badge badge-warning"
+            [routerLink]="['/crud/', product.id]"
+            style="color: #000"
+          >
+            {{ product.name }}
+          </a>
+        </td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>
+          <a
+            href="#"
+            [routerLink]="['/crud/update/', product.id]"
+            class="btn btn-primary"
+          >
+            update
+          </a>
+          <button
+            type="button"
+            (click)="delete(product.id)"
+            class="btn btn-danger"
+          >
+            delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </div>
