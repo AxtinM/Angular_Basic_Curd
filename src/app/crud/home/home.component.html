@@ -1,6 +1,10 @@
-<div class="container">
+<div class="container mt-5">
   <h1>List of Product</h1>
-  <button type="button" routerLink="/crud/create/" class="btn btn-success">
+  <button
+    type="button"
+    routerLink="/crud/create/"
+    class="btn btn-success mt-5 mb-5"
+  >
     Create New Product
   </button>
   <table class="table">
@@ -15,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr scope="row" *ngFor="let product of products">
+      <tr scope="row" class="mt-5 mb-5" *ngFor="let product of products">
         <td>{{ product.id }}</td>
         <td>
           <a
@@ -30,7 +34,7 @@
         <td>{{ product.description }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.quantity }}</td>
-        <td>
+        <td class="mx-auto">
           <a
             href="#"
             [routerLink]="['/crud/update/', product.id]"
@@ -41,7 +45,7 @@
           <button
             type="button"
             (click)="delete(product.id)"
-            class="btn btn-danger"
+            class="btn btn-danger mx-2"
           >
             delete
           </button>
