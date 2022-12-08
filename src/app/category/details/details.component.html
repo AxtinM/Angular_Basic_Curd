@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">{{ category.name }}</h1>
+    <p *ngIf="category.description !== undefined" class="lead">
+      {{ category.description }}
+    </p>
+    <hr class="my-4" />
+    <p *ngIf="category.nbrProduits !== undefined">
+      {{ category.nbrProduits }}
+    </p>
+    <a class="btn btn-primary btn-lg" href="#" routerLink="/category/list"
+      >Go Back</a
+    >
+  </div>
+</div>

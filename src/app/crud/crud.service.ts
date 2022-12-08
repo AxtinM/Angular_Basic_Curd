@@ -12,34 +12,34 @@ export class CrudService {
       'Content-Type': 'application/json',
     }),
   };
-  private apiServer = 'http://localhost:3000';
+  private apiServer = 'http://localhost:3000/products/';
   constructor(private httpClient: HttpClient) {}
 
   create(product: any): Observable<Product> {
     return this.httpClient.post<Product>(
-      this.apiServer + '/products/',
+      this.apiServer,
       JSON.stringify(product),
       this.httpOptions
     );
   }
 
   getById(id: any): Observable<Product> {
-    return this.httpClient.get<Product>(this.apiServer + '/products/' + id);
+    return this.httpClient.get<Product>(this.apiServer + id);
   }
 
   getAll(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.apiServer + '/products/');
+    return this.httpClient.get<Product[]>(this.apiServer);
   }
 
   update(id: any, product: any): Observable<Product> {
     return this.httpClient.put<Product>(
-      this.apiServer + '/products/' + id,
+      this.apiServer + id,
       JSON.stringify(product),
       this.httpOptions
     );
   }
 
   delete(id: any): Observable<Product> {
-    return this.httpClient.delete<Product>(this.apiServer + '/products/' + id);
+    return this.httpClient.delete<Product>(this.apiServer + id);
   }
 }

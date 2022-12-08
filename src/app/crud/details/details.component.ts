@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CrudService } from '../crud.service';
 import { Product } from '../product';
 
@@ -13,7 +13,6 @@ export class DetailsComponent implements OnInit {
   public product!: Product;
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
     private crudService: CrudService
   ) {}

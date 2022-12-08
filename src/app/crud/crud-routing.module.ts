@@ -6,11 +6,11 @@ import { HomeComponent } from './home/home.component';
 import { UpdateComponent } from './update/update.component';
 
 const routes: Routes = [
-  { path: 'crud', redirectTo: 'crud/home', pathMatch: 'full' },
-  { path: 'crud/home', component: HomeComponent },
-  { path: 'crud/create', component: CreateComponent },
-  { path: 'crud/update/:productId', component: UpdateComponent },
-  { path: 'crud/:productId', component: DetailsComponent },
+  { path: 'product', redirectTo: 'product/home', pathMatch: 'full' },
+  { path: 'product/list', component: HomeComponent },
+  { path: 'product/create', component: CreateComponent },
+  { path: 'product/update/:productId', component: UpdateComponent },
+  { path: 'product/:productId', component: DetailsComponent },
 ];
 
 @NgModule({

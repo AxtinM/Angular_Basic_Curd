@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <h1>Liste des Categories</h1>
+  <button
+    type="button"
+    routerLink="/category/create/"
+    class="btn btn-success mt-5 mb-5"
+  >
+    Create New category
+  </button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">description</th>
+        <th scope="col">nbr produits</th>
+        <th scope="col">action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" class="mt-5 mb-5" *ngFor="let category of categories">
+        <td>
+          <a
+            href="#"
+            class="badge badge-warning"
+            [routerLink]="['/crud/', category.id]"
+            style="color: #000"
+          >
+            {{ category.name }}
+          </a>
+        </td>
+        <td>{{ category.description }}</td>
+        <td>{{ category.price }}</td>
+        <td>{{ category.quantity }}</td>
+        <td class="mx-auto">
+          <a
+            href="#"
+            [routerLink]="['/crud/update/', category.id]"
+            class="btn btn-primary"
+          >
+            update
+          </a>
+          <button
+            type="button"
+            (click)="delete(category.id)"
+            class="btn btn-danger mx-2"
+          >
+            delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
