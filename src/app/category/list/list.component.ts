@@ -8,13 +8,13 @@ import { CrudCategoryService } from '../crud.category.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  catogories!: Category[];
+  categories!: Category[];
 
   constructor(private categoryService: CrudCategoryService) {}
 
   ngOnInit(): void {
     this.categoryService.getALl().subscribe((res) => {
-      this.catogories = res;
+      this.categories = res;
     });
   }
 

@@ -1,8 +1,8 @@
 <div class="container mt-5">
-  <h1>List of Product</h1>
+  <h1>List of Products</h1>
   <button
     type="button"
-    routerLink="/crud/create/"
+    routerLink="/product/create/"
     class="btn btn-success mt-5 mb-5"
   >
     Create New Product
@@ -10,7 +10,6 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">id</th>
         <th scope="col">name</th>
         <th scope="col">description</th>
         <th scope="col">price</th>
@@ -20,12 +19,11 @@
     </thead>
     <tbody>
       <tr scope="row" class="mt-5 mb-5" *ngFor="let product of products">
-        <td>{{ product.id }}</td>
         <td>
           <a
             href="#"
             class="badge badge-warning"
-            [routerLink]="['/crud/', product.id]"
+            [routerLink]="['/product/', product.id]"
             style="color: #000"
           >
             {{ product.name }}
@@ -37,7 +35,7 @@
         <td class="mx-auto">
           <a
             href="#"
-            [routerLink]="['/crud/update/', product.id]"
+            [routerLink]="['/product/update/', product.id]"
             class="btn btn-primary"
           >
             update

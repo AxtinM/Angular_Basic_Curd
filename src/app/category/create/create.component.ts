@@ -22,7 +22,9 @@ export class CreateComponent implements OnInit {
       name: [''],
       category: [''],
     });
+  }
 
+  formSubmit() {
     this.categoryService.create(this.categoryForm.value).subscribe((res) => {
       console.log('Category created successfully\n', res);
       this.router.navigateByUrl('category/list');
