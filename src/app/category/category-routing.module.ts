@@ -8,8 +8,8 @@ import { UpdateComponent } from './update/update.component';
 const routes: Routes = [
   { path: '', redirectTo: 'list', pathMatch: 'full' },
   { path: 'list', component: ListComponent },
-  { path: ':categoryId', component: DetailsComponent },
   { path: 'create', component: CreateComponent },
+  { path: ':categoryId', component: DetailsComponent },
   { path: 'update/:categoryId', component: UpdateComponent },
 ];
 

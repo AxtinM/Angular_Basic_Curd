@@ -14,6 +14,11 @@ const routes: Routes = [
       import('./category/category.module').then((res) => res.CategoryModule),
   },
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/auth.module').then((res) => res.AuthModule),
+  },
+  {
     path: '',
     component: HomeComponent,
   },

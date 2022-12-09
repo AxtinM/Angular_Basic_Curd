@@ -20,7 +20,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.categoryForm = this.fb.group({
       name: [''],
-      category: [''],
+      description: [''],
     });
   }
 

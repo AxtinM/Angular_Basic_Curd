@@ -1,0 +1,68 @@
+<!-- Pills navs -->
+<div class="container mt-5">
+  <h1>Register</h1>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <!-- Pills navs -->
+
+      <!-- Pills content -->
+      <div class="tab-content">
+        <div
+          class="tab-pane fade show active"
+          id="pills-register"
+          role="tabpanel"
+          aria-labelledby="tab-register"
+        >
+          <form [formGroup]="userForm">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input
+                type="email"
+                id="loginName"
+                formControlName="email"
+                class="form-control"
+              />
+              <label class="form-label" for="loginName">Email</label>
+            </div>
+            <!-- Name input -->
+            <div class="form-outline mb-4">
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                class="form-control"
+              />
+              <label class="form-label" for="name">Name</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input
+                type="password"
+                id="loginPassword"
+                formControlName="password"
+                class="form-control"
+              />
+              <label class="form-label" for="loginPassword">Password</label>
+            </div>
+            <!-- 2 column grid layout -->
+            <div class="row mb-4"></div>
+
+            <!-- Submit button -->
+            <button
+              class="btn btn-primary btn-block mb-4"
+              (click)="submitForm()"
+            >
+              Sign up
+            </button>
+
+            <!-- Register buttons -->
+          </form>
+        </div>
+      </div>
+      <!-- Pills content -->
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
