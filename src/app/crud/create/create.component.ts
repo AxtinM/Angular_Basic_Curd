@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/category/category';
+import { CrudCategoryService } from 'src/app/category/crud.category.service';
 import { CrudService } from '../crud.service';
 
 @Component({
@@ -10,10 +12,14 @@ import { CrudService } from '../crud.service';
 })
 export class CreateComponent implements OnInit {
   productForm!: FormGroup;
+  selectedValue!: any;
+  categories!: Category[];
+
   constructor(
     public fb: FormBuilder,
     private crudService: CrudService,
-    private router: Router
+    private router: Router,
+    private categoryService: CrudCategoryService
   ) {}
 
   ngOnInit(): void {
@@ -23,6 +29,14 @@ export class CreateComponent implements OnInit {
       price: [''],
       quantity: [''],
     });
+
+    this.categoryService.getALl().subscribe((res) => {
+      this.categories = res;
+    });
+  }
+
+  onChange(value: string) {
+    this.selectedValue = value;
   }
 
   formSubmit() {

@@ -12,7 +12,7 @@ export class CrudService {
       'Content-Type': 'application/json',
     }),
   };
-  private apiServer = 'http://localhost:3000/products/';
+  private apiServer = 'http://localhost:4000/product/';
   constructor(private httpClient: HttpClient) {}
 
   create(product: any): Observable<Product> {

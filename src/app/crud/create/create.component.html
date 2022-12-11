@@ -27,6 +27,33 @@
     </div>
     <div class="row">
       <div class="col">
+        <label>Category</label>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Select an option
+          </button>
+          <div
+            class="dropdown-menu"
+            aria-labelledby="dropdownMenuButton"
+            *ngFor="let category of categories"
+          >
+            <a class="dropdown-item" (click)="onChange(category._id)">{{
+              category.name
+            }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col">
         <label>Price</label>
         <input type="text" formControlName="price" class="form-control" />
       </div>

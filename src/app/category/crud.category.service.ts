@@ -12,7 +12,7 @@ export class CrudCategoryService {
       'Content-Type': 'application/json',
     }),
   };
-  private apiServer = 'http://localhost:3000/category/';
+  private apiServer = 'http://localhost:4000/category/';
 
   category!: Category;
 

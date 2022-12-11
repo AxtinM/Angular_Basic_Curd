@@ -23,7 +23,7 @@
           <a
             href="#"
             class="badge badge-warning"
-            [routerLink]="['/product/', product.id]"
+            [routerLink]="['/product/', product._id]"
             style="color: #000"
           >
             {{ product.name }}
@@ -35,14 +35,14 @@
         <td class="mx-auto">
           <a
             href="#"
-            [routerLink]="['/product/update/', product.id]"
+            [routerLink]="['/product/update/', product._id]"
             class="btn btn-primary"
           >
             update
           </a>
           <button
             type="button"
-            (click)="delete(product.id)"
+            (click)="delete(product._id)"
             class="btn btn-danger mx-2"
           >
             delete

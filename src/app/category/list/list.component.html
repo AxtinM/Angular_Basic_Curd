@@ -22,7 +22,7 @@
           <a
             href="#"
             class="badge badge-warning"
-            [routerLink]="['/category/', category.id]"
+            [routerLink]="['/category/', category._id]"
             style="color: #000"
           >
             {{ category.name }}
@@ -33,14 +33,14 @@
         <td class="mx-auto">
           <a
             href="#"
-            [routerLink]="['/category/update/', category.id]"
+            [routerLink]="['/category/update/', category._id]"
             class="btn btn-primary"
           >
             update
           </a>
           <button
             type="button"
-            (click)="delete(category.id)"
+            (click)="delete(category._id)"
             class="btn btn-danger mx-2"
           >
             delete

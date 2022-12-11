@@ -7,7 +7,7 @@ import { User } from './user';
   providedIn: 'root',
 })
 export class AuthService {
-  apiServer = 'http://localhost:3000/auth/';
+  apiServer = 'http://localhost:4000/auth/';
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

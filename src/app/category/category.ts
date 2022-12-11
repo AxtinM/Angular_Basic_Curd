@@ -1,7 +1,7 @@
 import { Product } from '../crud/product';
 
 export interface Category {
-  id: string | number;
+  _id: string;
   name: string;
   description: string;
   nbrProduits?: string | number;

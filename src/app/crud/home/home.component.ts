@@ -14,13 +14,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.crudService.getAll().subscribe((data: Product[]) => {
+      console.log(data);
       this.products = data;
     });
   }
 
   delete(id: any) {
     this.crudService.delete(id).subscribe((data) => {
-      this.products = this.products.filter((item) => item.id != data.id);
+      this.products = this.products.filter((item) => item._id != data._id);
     });
   }
 }
