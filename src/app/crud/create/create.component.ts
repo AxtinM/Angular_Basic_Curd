@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/category/category';
 import { CrudCategoryService } from 'src/app/category/crud.category.service';
@@ -12,8 +12,9 @@ import { CrudService } from '../crud.service';
 })
 export class CreateComponent implements OnInit {
   productForm!: FormGroup;
-  selectedValue!: any;
+  selectedValue!: string;
   categories!: Category[];
+  errorMsg!: string;
 
   constructor(
     public fb: FormBuilder,
@@ -24,10 +25,11 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      name: [''],
-      description: [''],
-      price: [''],
-      quantity: [''],
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      quantity: ['', [Validators.required]],
+      category: ['', [Validators.required]],
     });
 
     this.categoryService.getALl().subscribe((res) => {
@@ -36,14 +38,16 @@ export class CreateComponent implements OnInit {
   }
 
   onChange(value: string) {
-    this.selectedValue = value;
+    this.productForm.controls['category'].setValue(value);
   }
 
   formSubmit() {
-    console.log(this.productForm.value);
-    this.crudService.create(this.productForm.value).subscribe((res) => {
-      console.log(res);
-      this.router.navigateByUrl('/crud/home');
-    });
+    if (this.productForm.valid) {
+      this.crudService.create(this.productForm.value).subscribe((res) => {
+        this.router.navigateByUrl('/crud/home');
+      });
+    } else {
+      this.errorMsg = 'You need to make sure the date is correct !';
+    }
   }
 }

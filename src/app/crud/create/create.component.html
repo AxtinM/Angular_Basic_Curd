@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <h1>Create Product</h1>
-  <form [formGroup]="productForm" (ngSubmit)="formSubmit()" novalidate>
+  <form [formGroup]="productForm" novalidate>
     <div class="row">
       <div class="col">
         <label>Name</label>
@@ -28,26 +28,23 @@
     <div class="row">
       <div class="col">
         <label>Category</label>
-        <div class="dropdown">
+        <!-- Example single danger button -->
+        <div class="btn-group mx-3 mt-3">
           <button
-            class="btn btn-secondary dropdown-toggle"
             type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
+            class="btn btn-danger dropdown-toggle"
+            data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Select an option
+            Choose Category
           </button>
-          <div
-            class="dropdown-menu"
-            aria-labelledby="dropdownMenuButton"
-            *ngFor="let category of categories"
-          >
-            <a class="dropdown-item" (click)="onChange(category._id)">{{
-              category.name
-            }}</a>
-          </div>
+          <ul class="dropdown-menu">
+            <li *ngFor="let category of categories">
+              <button class="dropdown-item" (click)="onChange(category._id)">
+                {{ category.name }}
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
       <div class="col"></div>
@@ -67,13 +64,19 @@
       <div class="col"></div>
     </div>
     <div class="row">
+      <div
+        class="form-text fw-semibold text-danger mb-3 mt-3"
+        *ngIf="errorMsg != undefined"
+      >
+        {{ errorMsg }}
+      </div>
       <div class="col">
-        <button class="btn btn-primary mb-3 mt-3" type="submit">Submit</button>
-        <div class="col">
-          <a class="btn btn-secondary" href="#" routerLink="/product/list"
-            >Back</a
-          >
-        </div>
+        <button class="btn btn-primary mb-3 mt-3" (click)="formSubmit()">
+          Submit
+        </button>
+        <a class="btn btn-secondary mx-3" href="#" routerLink="/product/list"
+          >Back</a
+        >
       </div>
     </div>
   </form>
