@@ -51,4 +51,11 @@
       </tr>
     </tbody>
   </table>
+  <div
+    class="alert alert-danger text-center mt-5"
+    role="alert"
+    *ngIf="errorMsg != undefined"
+  >
+    {{ errorMsg }}
+  </div>
 </div>

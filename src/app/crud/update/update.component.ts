@@ -31,11 +31,11 @@ export class UpdateComponent implements OnInit {
     this.crudService.getById(this.id).subscribe((res) => {
       console.log(res);
       this.productForm = this.fb.group({
-        name: [res.name, [Validators.required]],
-        description: [res.description, [Validators.required]],
-        price: [res.price, [Validators.required]],
-        quantity: [res.quantity, [Validators.required]],
-        category: [res.category, [Validators.required]],
+        name: [res.name],
+        description: [res.description],
+        price: [res.price],
+        quantity: [res.quantity],
+        category: [res.category],
       });
     });
 
@@ -45,7 +45,6 @@ export class UpdateComponent implements OnInit {
   }
 
   onChange(value: string) {
-    console.log(this.productForm.value);
     this.productForm.controls['category'].setValue(value);
   }
 

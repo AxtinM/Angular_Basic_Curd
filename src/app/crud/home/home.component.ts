@@ -9,6 +9,7 @@ import { Product } from '../product';
 })
 export class HomeComponent implements OnInit {
   public products: Product[] = [];
+  errorMsg!: string;
 
   constructor(public crudService: CrudService) {}
 
@@ -20,8 +21,13 @@ export class HomeComponent implements OnInit {
   }
 
   delete(id: any) {
-    this.crudService.delete(id).subscribe((data) => {
-      this.products = this.products.filter((item) => item._id != data._id);
-    });
+    this.crudService.delete(id).subscribe(
+      (data) => {
+        this.products = this.products.filter((item) => item._id != data._id);
+      },
+      (error) => {
+        this.errorMsg = error.statusText;
+      }
+    );
   }
 }

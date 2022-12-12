@@ -5,5 +5,5 @@ export interface Category {
   name: string;
   description: string;
   nbrProduits?: string | number;
-  produits?: Product[];
+  products?: Product[];
 }

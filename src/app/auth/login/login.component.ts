@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   userForm!: FormGroup;
-  constructor(private authService: AuthService, private fb: FormBuilder) {}
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -22,7 +27,7 @@ export class LoginComponent implements OnInit {
     const val = this.userForm.value;
     if (val.email && val.password) {
       this.authService.login(val).subscribe((res) => {
-        console.log(res);
+        this.router.navigateByUrl('product/list');
       });
     }
   }

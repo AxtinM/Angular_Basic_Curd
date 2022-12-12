@@ -1,8 +1,8 @@
 <ng-container
-  *ngIf="loggedIn == true; then notLoggedIn; else isLoggedIn"
+  *ngIf="loggedIn === true; then isLoggedIn; else notLoggedIn"
 ></ng-container>
 
-<ng-template #isLoggedIn>
+<ng-template #notLoggedIn>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <span class="border border-white px-3 py-2">
@@ -25,7 +25,7 @@
     </div>
   </nav>
 </ng-template>
-<ng-template #notLoggedIn>
+<ng-template #isLoggedIn>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <span class="border border-white px-3 py-2">
@@ -34,7 +34,13 @@
       <div class="d-flex">
         <ul class="navbar-nav flex">
           <li class="nav-item">
-            <a href="#" routerLink="/auth/register" class="nav-link">LogOut</a>
+            <a
+              href="#"
+              routerLink="/auth/register"
+              class="nav-link"
+              (click)="logout()"
+              >LogOut</a
+            >
           </li>
         </ul>
       </div>

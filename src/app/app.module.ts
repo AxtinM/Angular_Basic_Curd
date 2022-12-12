@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CrudModule } from './crud/crud.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { AuthInterceptor } from './AuthInterceptor';
+import { LocalStorageService } from './localStorage.service';
+import { JWTTokenService } from './token.service';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -18,7 +20,17 @@ import { AuthInterceptor } from './AuthInterceptor';
     CrudModule,
     RouterModule,
   ],
-  providers: [AuthInterceptor],
+  providers: [
+    AuthInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    LocalStorageService,
+    JWTTokenService,
+  ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

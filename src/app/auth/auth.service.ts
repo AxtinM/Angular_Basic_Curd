@@ -7,6 +7,9 @@ import { User } from './user';
   providedIn: 'root',
 })
 export class AuthService {
+  signIncallBack() {
+    throw new Error('Method not implemented.');
+  }
   apiServer = 'http://localhost:4000/auth/';
   httpOptions = {
     headers: new HttpHeaders({

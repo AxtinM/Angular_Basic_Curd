@@ -1,1 +1,69 @@
-<p>update works!</p>
+<div class="container">
+  <h1>update product</h1>
+  <form [formGroup]="productForm">
+    <div class="row">
+      <div class="col">
+        <label>Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          maxlength="20"
+        />
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Description</label>
+        <textarea
+          class="form-control"
+          formControlName="description"
+          rows="3"
+          maxlength="50"
+        ></textarea>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Products</label>
+        <div class="btn-group mx-3 mt-3">
+          <button
+            type="button"
+            class="btn btn-danger dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Choose Products
+          </button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let product of products">
+              <button class="dropdown-item" (click)="onChange(product._id)">
+                {{ product.name }}
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col mt-3">
+        <div
+          class="form-text fw-semibold text-danger mb-3 mt-3"
+          *ngIf="errorMsg != undefined"
+        >
+          {{ errorMsg }}
+        </div>
+        <button class="btn btn-primary mx-1" (click)="submitForm()">
+          Submit
+        </button>
+
+        <a class="btn btn-secondary mx-1" href="#" routerLink="/product/list"
+          >Back</a
+        >
+      </div>
+    </div>
+  </form>
+</div>
