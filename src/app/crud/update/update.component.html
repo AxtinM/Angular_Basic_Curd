@@ -1,6 +1,6 @@
 <div class="container">
   <h1>update product</h1>
-  <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+  <form [formGroup]="productForm">
     <div class="row">
       <div class="col">
         <label>Name</label>
@@ -27,9 +27,33 @@
     </div>
     <div class="row">
       <div class="col">
+        <label>Category</label>
+        <div class="btn-group mx-3 mt-3">
+          <button
+            type="button"
+            class="btn btn-danger dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Choose Category
+          </button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let category of categories">
+              <button class="dropdown-item" (click)="onChange(category._id)">
+                {{ category.name }}
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col">
         <label>Price</label>
         <input type="text" formControlName="price" class="form-control" />
       </div>
+      <div class="col"></div>
     </div>
     <div class="row">
       <div class="col">
@@ -40,7 +64,15 @@
     </div>
     <div class="row">
       <div class="col mt-3">
-        <button class="btn btn-primary mx-1" type="submit">Submit</button>
+        <div
+          class="form-text fw-semibold text-danger mb-3 mt-3"
+          *ngIf="errorMsg != undefined"
+        >
+          {{ errorMsg }}
+        </div>
+        <button class="btn btn-primary mx-1" (click)="submitForm()">
+          Submit
+        </button>
 
         <a class="btn btn-secondary mx-1" href="#" routerLink="/product/list"
           >Back</a

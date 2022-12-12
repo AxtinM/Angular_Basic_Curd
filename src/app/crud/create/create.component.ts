@@ -12,7 +12,6 @@ import { CrudService } from '../crud.service';
 })
 export class CreateComponent implements OnInit {
   productForm!: FormGroup;
-  selectedValue!: string;
   categories!: Category[];
   errorMsg!: string;
 
@@ -42,10 +41,11 @@ export class CreateComponent implements OnInit {
   }
 
   formSubmit() {
-    if (this.productForm.valid) {
+    if (!this.productForm.valid) {
       this.crudService.create(this.productForm.value).subscribe((res) => {
-        this.router.navigateByUrl('/crud/home');
+        console.log(res);
       });
+      this.router.navigateByUrl('product/list');
     } else {
       this.errorMsg = 'You need to make sure the date is correct !';
     }

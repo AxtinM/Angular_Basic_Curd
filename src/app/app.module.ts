@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CrudModule } from './crud/crud.module';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { AuthInterceptor } from './AuthInterceptor';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -17,7 +18,7 @@ import { RouterModule } from '@angular/router';
     CrudModule,
     RouterModule,
   ],
-  providers: [],
+  providers: [AuthInterceptor],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

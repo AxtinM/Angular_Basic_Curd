@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { User } from './user';
 
 @Injectable({
@@ -16,19 +16,41 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(dto: User): Observable<User> {
-    return this.http.post<User>(
-      this.apiServer + 'login',
-      JSON.stringify(dto),
-      this.httpOptions
-    );
+  login(dto: any): Observable<any> {
+    return this.http
+      .post<any>(
+        this.apiServer + 'login',
+        JSON.stringify(dto),
+        this.httpOptions
+      )
+      .pipe(
+        map((res) => {
+          const token = res['access_token'];
+          localStorage.setItem('id_token', token);
+          return token;
+        }),
+        catchError((error) => {
+          return throwError(() => error);
+        })
+      );
   }
 
-  register(dto: User): Observable<User> {
-    return this.http.post<User>(
-      this.apiServer + 'register',
-      JSON.stringify(dto),
-      this.httpOptions
-    );
+  register(dto: any): Observable<any> {
+    return this.http
+      .post<any>(
+        this.apiServer + 'register',
+        JSON.stringify(dto),
+        this.httpOptions
+      )
+      .pipe(
+        map((res) => {
+          const token = res['access_token'];
+          localStorage.setItem('id_token', token);
+          return token;
+        }),
+        catchError((error) => {
+          return throwError(() => error);
+        })
+      );
   }
 }
